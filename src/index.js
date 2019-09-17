@@ -7,6 +7,14 @@ import { Provider } from 'react-redux';
 import { AppRegistry, Platform, StyleSheet, Text, View } from 'react-native';
 import { name as appName } from '../app.json';
 
+import configureStore from './store';
+import AppNavigator from './navigator';
+import applyConfigSettings from './config';
+import NetworkInfo from './services/NetworkInfo';
+import { networkInfoListener } from './actions/NetworkInfoActions';
+
+const reducers = require('./reducers').default;
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -14,6 +22,36 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu'
 });
 class App extends Component {
+  state = {
+    isLoading: true,
+    appConfigData: {},
+    store: configureStore(reducers, () => {
+      this.setState({ isLoading: false }, () => {
+        DataHelper.setStore(this.state.store);
+
+        this.loadingCompleted();
+      });
+    })
+  };
+
+  componentDidMount() {
+    NetworkInfo.networkInfoListener(
+      this.state.store.dispatch,
+      networkInfoListener
+    );
+  }
+
+  componentWillUnmount() {
+    NetworkInfo.removeNetworkInfoListener(
+      this.state.store.dispatch,
+      networkInfoListener
+    );
+  }
+
+  loadingCompleted = () => {
+    // RedirectionHelper.redirectIfLoggedIn(data);
+  };
+
   render() {
     return (
       <View style={styles.container}>
