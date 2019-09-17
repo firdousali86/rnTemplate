@@ -3,7 +3,8 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, AppRegistry } from 'react-native';
+import { Provider } from 'react-redux';
+import { AppRegistry, Platform, StyleSheet, Text, View } from 'react-native';
 import { name as appName } from '../app.json';
 
 const instructions = Platform.select({
