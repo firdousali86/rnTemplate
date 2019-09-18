@@ -16,6 +16,8 @@ import { DataHelper } from './helpers';
 
 const reducers = require('./reducers').default;
 
+applyConfigSettings();
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -25,7 +27,6 @@ const instructions = Platform.select({
 class App extends Component {
   state = {
     isLoading: true,
-    appConfigData: {},
     store: configureStore(reducers, () => {
       this.setState({ isLoading: false }, () => {
         DataHelper.setStore(this.state.store);
@@ -54,11 +55,15 @@ class App extends Component {
   };
 
   render() {
+    if (this.state.isLoading) {
+      return null;
+    }
+
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Provider store={this.state.store}>
+          <AppNavigator />
+        </Provider>
       </View>
     );
   }
@@ -66,20 +71,7 @@ class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5
+    flex: 1
   }
 });
 
