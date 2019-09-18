@@ -6,6 +6,6 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     padding: Metrics.baseMargin,
-    backgroundColor: Colors.background.primary
+    backgroundColor: Colors.themeColors.themeBlue //Colors.background.primary
   }
 });

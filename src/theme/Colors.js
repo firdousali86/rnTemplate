@@ -44,7 +44,9 @@ const themeColors = {
   disabledDoneButtonColor: '#b9b9b9',
   positive: '#2ca502',
   destructive: '#e45858',
-  decision: 'rgb(215, 110, 51)'
+  decision: 'rgb(215, 110, 51)',
+  themeBlue: '#22b6fb',
+  themeGrey: '#272626'
 };
 
 const presetColors = {
@@ -77,7 +79,8 @@ const presetColors = {
 };
 
 const navbar = {
-  text: white
+  text: white,
+  background: themeColors.themeBlue
 };
 
 const border = '#f2f2f2';
