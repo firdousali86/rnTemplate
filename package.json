@@ -9,6 +9,7 @@
   "dependencies": {
     "apisauce": "^1.1.0",
     "base-64": "^0.1.0",
+    "jail-monkey": "^2.3.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "react": "16.8.3",
@@ -19,6 +20,7 @@
     "react-native-router-flux": "^4.0.6",
     "react-native-snap-carousel": "^3.7.5",
     "react-native-tts": "^3.0.0",
+    "react-native-version-number": "^0.3.6",
     "react-native-voice": "^0.3.0",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",

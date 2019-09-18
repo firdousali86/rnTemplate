@@ -2728,6 +2728,10 @@ istanbul-reports@^2.2.6:
   dependencies:
     handlebars "^4.1.2"
 
+jail-monkey@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/jail-monkey/-/jail-monkey-2.3.0.tgz#b52fc502e03216b57070d02582ee183854c76cce"
+
 jest-changed-files@^24.9.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-24.9.0.tgz#08d8c15eb79a7fa3fc98269bc14b451ee82f8039"
@@ -4559,6 +4563,10 @@ react-native-tab-view@^1.0.0:
 react-native-tts@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-native-tts/-/react-native-tts-3.0.0.tgz#987d6bc5430f7d0bdc0c7c278eb72744fe3ec516"
+
+react-native-version-number@^0.3.6:
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/react-native-version-number/-/react-native-version-number-0.3.6.tgz#dd8b1435fc217df0a166d7e4a61fdc993f3e7437"
 
 react-native-voice@^0.3.0:
   version "0.3.0"

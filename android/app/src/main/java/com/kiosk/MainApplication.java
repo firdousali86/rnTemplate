@@ -3,6 +3,8 @@ package com.kiosk;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.gantix.JailMonkey.JailMonkeyPackage;
+import com.apsl.versionnumber.RNVersionNumberPackage;
 import com.wenkesj.voice.VoicePackage;
 import net.no_mad.tts.TextToSpeechPackage;
 import com.facebook.react.ReactNativeHost;
@@ -25,6 +27,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new JailMonkeyPackage(),
+            new RNVersionNumberPackage(),
             new VoicePackage(),
             new TextToSpeechPackage()
       );
