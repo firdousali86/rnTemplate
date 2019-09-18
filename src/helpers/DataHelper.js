@@ -1,7 +1,5 @@
 import { Actions } from 'react-native-router-flux';
 
-import utils from '../util';
-
 class DataHelper {
   store = undefined;
 

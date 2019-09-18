@@ -12,6 +12,7 @@ import AppNavigator from './navigator';
 import applyConfigSettings from './config';
 import NetworkInfo from './services/NetworkInfo';
 import { networkInfoListener } from './actions/NetworkInfoActions';
+import { DataHelper } from './helpers';
 
 const reducers = require('./reducers').default;
 
