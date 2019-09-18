@@ -9,7 +9,6 @@
   "dependencies": {
     "apisauce": "^1.1.0",
     "base-64": "^0.1.0",
-    "jail-monkey": "^2.3.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "react": "16.8.3",

@@ -2,7 +2,6 @@
 import { Platform, Alert, ToastAndroid } from 'react-native';
 import moment from 'moment';
 import VersionNumber from 'react-native-version-number';
-import JailMonkey from 'jail-monkey';
 
 import { timeZone } from '../config/AppConfig';
 // import DeviceInfo from "react-native-device-info";
@@ -132,14 +131,6 @@ class Util {
     if (!this.isRelease()) {
       console.log(data);
     }
-  };
-
-  isDeviceRooted = () => {
-    return JailMonkey.isJailBroken();
-  };
-
-  isLocationMocking = () => {
-    return JailMonkey.canMockLocation();
   };
 }
 

@@ -138,7 +138,6 @@ android {
 }
 
 dependencies {
-    implementation project(':jail-monkey')
     implementation project(':react-native-version-number')
     implementation project(':react-native-voice')
     implementation project(':react-native-tts')
