@@ -10,9 +10,10 @@ import {
   ActionConst
 } from 'react-native-router-flux';
 import { View } from 'react-native';
+import { Colors } from '../theme';
+import { Empty } from '../containers';
 
 import styles from './styles';
-// import { Colors, Images } from '../theme';
 
 const mapStateToProps = state => {
   return {
@@ -25,14 +26,10 @@ const navigator = Actions.create(
     key='root'
     titleStyle={styles.title}
     headerStyle={styles.header}
-    {/* headerTintColor={Colors.navbar.text} */}
+    headerTintColor={Colors.navbar.text}
     backTitle=' '
   >
-    {/* <Scene
-      title='Select Country Code'
-      key='selectCountryCode'
-      component={SelectCountryCode}
-    /> */}
+    <Scene title='Select Country Code' key='empty' component={Empty} />
   </Stack>
 );
 
