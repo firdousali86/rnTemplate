@@ -11,7 +11,7 @@ import {
 } from 'react-native-router-flux';
 import { View } from 'react-native';
 import { Colors } from '../theme';
-import { Empty } from '../containers';
+import { Empty, Dashboard } from '../containers';
 
 import styles from './styles';
 
@@ -30,6 +30,13 @@ const navigator = Actions.create(
     backTitle=' '
   >
     <Scene title='Select Country Code' key='empty' component={Empty} />
+    <Scene
+      title='Select Country Code'
+      key='dashboard'
+      component={Dashboard}
+      hideNavBar
+      initial
+    />
   </Stack>
 );
 
