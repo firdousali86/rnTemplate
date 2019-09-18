@@ -1,6 +1,5 @@
 // @flow
 import { Platform, Alert, ToastAndroid } from 'react-native';
-import { isIphoneX } from 'react-native-iphone-x-helper';
 import moment from 'moment';
 import VersionNumber from 'react-native-version-number';
 import JailMonkey from 'jail-monkey';
@@ -25,43 +24,10 @@ class Util {
     return VersionNumber.buildVersion;
   };
 
-  keyExtractor = (item: Object, index: number) => index;
-
   getPlatform = () => Platform.OS;
 
   isPlatformAndroid() {
     return Platform.OS === 'android';
-  }
-
-  isValidURL(url: 'string') {
-    const re = /^(http|https|fttp):\/\/|[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?$/;
-    return re.test(url);
-  }
-
-  isEmailValid(email: string) {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-  }
-
-  isPasswordValid(password: string) {
-    return password.length > 5;
-  }
-
-  getValidImage(image: any) {
-    if (typeof image === 'string' && this.isValidURL(image)) {
-      return { uri: image };
-    }
-    // if (typeof image === "string" && !this.isValidURL(image)) {
-    //   return require(image);
-    // }
-    return image;
-  }
-
-  stringCapitalize(str) {
-    if (str && str.length > 0)
-      return str.charAt(0).toUpperCase() + str.slice(1);
-
-    return '';
   }
 
   isJSDebugMode() {
@@ -131,10 +97,6 @@ class Util {
       .fromNow();
   }
 
-  isIphoneX() {
-    return isIphoneX();
-  }
-
   getFloat(value) {
     let converted = parseFloat(value);
 
@@ -142,10 +104,6 @@ class Util {
 
     return 0.0;
   }
-
-  // isTablet() {
-  //   return DeviceInfo.isTablet();
-  // }
 
   precisionRound(number, precision) {
     var factor = Math.pow(10, precision);
