@@ -42,6 +42,58 @@
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>Uses Microphone to take user commands for speech recognition</string>
+  <key>NSSpeechRecognitionUsageDescription</key>
+  <string>Uses speech recognition for NLP</string>
+  <key>UIAppFonts</key>
+  <array>
+    <string>Lato-Black.ttf</string>
+    <string>Lato-BlackItalic.ttf</string>
+    <string>Lato-Bold.ttf</string>
+    <string>Lato-BoldItalic.ttf</string>
+    <string>Lato-Hairline.ttf</string>
+    <string>Lato-HairlineItalic.ttf</string>
+    <string>Lato-Heavy.ttf</string>
+    <string>Lato-HeavyItalic.ttf</string>
+    <string>Lato-Italic.ttf</string>
+    <string>Lato-Light.ttf</string>
+    <string>Lato-LightItalic.ttf</string>
+    <string>Lato-Medium.ttf</string>
+    <string>Lato-MediumItalic.ttf</string>
+    <string>Lato-Regular.ttf</string>
+    <string>Lato-Semibold.ttf</string>
+    <string>Lato-SemiboldItalic.ttf</string>
+    <string>Lato-Thin.ttf</string>
+    <string>Lato-ThinItalic.ttf</string>
+    <string>vincHand.ttf</string>
+    <string>Entypo.ttf</string>
+    <string>EvilIcons.ttf</string>
+    <string>Feather.ttf</string>
+    <string>FontAwesome.ttf</string>
+    <string>Foundation.ttf</string>
+    <string>Ionicons.ttf</string>
+    <string>MaterialCommunityIcons.ttf</string>
+    <string>MaterialIcons.ttf</string>
+    <string>Octicons.ttf</string>
+    <string>SimpleLineIcons.ttf</string>
+    <string>Zocial.ttf</string>
+    <string>rubicon-icon-font.ttf</string>
+    <string>Rubik-Black.ttf</string>
+    <string>Rubik-BlackItalic.ttf</string>
+    <string>Rubik-Bold.ttf</string>
+    <string>Rubik-BoldItalic.ttf</string>
+    <string>Rubik-Italic.ttf</string>
+    <string>Rubik-Light.ttf</string>
+    <string>Rubik-LightItalic.ttf</string>
+    <string>Rubik-Medium.ttf</string>
+    <string>Rubik-MediumItalic.ttf</string>
+    <string>Rubik-Regular.ttf</string>
+    <string>AntDesign.ttf</string>
+    <string>FontAwesome5_Brands.ttf</string>
+    <string>FontAwesome5_Regular.ttf</string>
+    <string>FontAwesome5_Solid.ttf</string>
+  </array>
 	<key>NSAppTransportSecurity</key>
 	<!--See http://ste.vn/2015/06/10/configuring-app-transport-security-ios-9-osx-10-11/ -->
 	<dict>
