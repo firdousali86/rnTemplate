@@ -4,6 +4,10 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
+import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
+import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
+import io.invertase.firebase.fabric.crashlytics.RNFirebaseCrashlyticsPackage;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
 import com.apsl.versionnumber.RNVersionNumberPackage;
 import com.wenkesj.voice.VoicePackage;
@@ -34,7 +38,11 @@ public class MainApplication extends Application implements ReactApplication {
             new RNVersionNumberPackage(),
             new VoicePackage(),
             new TextToSpeechPackage(),
-            new RNGeocoderPackage()
+            new RNGeocoderPackage(),         
+            new RNFirebaseMessagingPackage(), 
+            new RNFirebaseNotificationsPackage(), 
+            new RNFirebaseAnalyticsPackage(), 
+            new RNFirebaseCrashlyticsPackage()
       );
     }
 
