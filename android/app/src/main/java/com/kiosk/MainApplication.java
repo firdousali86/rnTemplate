@@ -1,7 +1,8 @@
 package com.kiosk;
 
 import android.app.Application;
-
+import android.content.Context;
+import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
@@ -14,11 +15,11 @@ import com.wenkesj.voice.VoicePackage;
 import net.no_mad.tts.TextToSpeechPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
-import com.facebook.react.shell.MainReactPackage;
+
 import com.facebook.soloader.SoLoader;
+import java.lang.reflect.InvocationTargetException;
 import com.devfd.RNGeocoder.RNGeocoderPackage;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
@@ -31,20 +32,29 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-            new RNFirebasePackage(),
-            new PickerPackage(),
-            new RNVersionNumberPackage(),
-            new VoicePackage(),
-            new TextToSpeechPackage(),
-            new RNGeocoderPackage(),         
-            new RNFirebaseMessagingPackage(), 
-            new RNFirebaseNotificationsPackage(), 
-            new RNFirebaseAnalyticsPackage(), 
-            new RNFirebaseCrashlyticsPackage()
-      );
+      @SuppressWarnings("UnnecessaryLocalVariable")
+      List<ReactPackage> packages = new PackageList(this).getPackages();
+      // Packages that cannot be autolinked yet can be added manually here, for example:
+      // packages.add(new MyReactNativePackage());
+      return packages;
     }
+
+    // @Override
+    // protected List<ReactPackage> getPackages() {
+    //   return Arrays.<ReactPackage>asList(
+    //       new MainReactPackage(),
+    //         new RNFirebasePackage(),
+    //         new PickerPackage(),
+    //         new RNVersionNumberPackage(),
+    //         new VoicePackage(),
+    //         new TextToSpeechPackage(),
+    //         new RNGeocoderPackage(),         
+    //         new RNFirebaseMessagingPackage(), 
+    //         new RNFirebaseNotificationsPackage(), 
+    //         new RNFirebaseAnalyticsPackage(), 
+    //         new RNFirebaseCrashlyticsPackage()
+    //   );
+    // }
 
     @Override
     protected String getJSMainModuleName() {
@@ -61,5 +71,32 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+    initializeFlipper(this); // Remove this line if you don't want Flipper enabled
+  }
+
+  /**
+   * Loads Flipper in React Native templates.
+   *
+   * @param context
+   */
+  private static void initializeFlipper(Context context) {
+    if (BuildConfig.DEBUG) {
+      try {
+        /*
+         We use reflection here to pick up the class that initializes Flipper,
+        since Flipper library is not available in release mode
+        */
+        Class<?> aClass = Class.forName("com.facebook.flipper.ReactNativeFlipper");
+        aClass.getMethod("initializeFlipper", Context.class).invoke(null, context);
+      } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+      } catch (NoSuchMethodException e) {
+        e.printStackTrace();
+      } catch (IllegalAccessException e) {
+        e.printStackTrace();
+      } catch (InvocationTargetException e) {
+        e.printStackTrace();
+      }
+    }
   }
 }

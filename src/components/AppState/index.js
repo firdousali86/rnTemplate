@@ -15,6 +15,7 @@ export default class AppState extends React.PureComponent {
   _handleAppStateChange = nextAppState => {
     const { handleAppState } = this.props;
     if (handleAppState) {
+      
       NotificationsHelper.getInitialNotification();
       handleAppState(nextAppState);
     }
