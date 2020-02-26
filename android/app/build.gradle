@@ -194,12 +194,14 @@ dependencies {
     implementation project(':react-native-voice')
     implementation project(':react-native-tts')
 
-    implementation 'com.google.firebase:firebase-messaging:17.3.4'
-    implementation 'com.google.firebase:firebase-core:16.0.6'
+    implementation "com.google.firebase:firebase-core:17.0.1"
+    implementation "com.google.firebase:firebase-messaging:19.0.0"
 
     compile(project(':react-native-firebase')) {
         transitive = false
     }
+
+    implementation 'com.google.android.gms:play-services-base:17.0.0'
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
