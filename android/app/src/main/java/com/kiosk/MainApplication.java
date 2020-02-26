@@ -15,7 +15,6 @@ import com.facebook.react.ReactPackage;
 
 import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
-import com.devfd.RNGeocoder.RNGeocoderPackage;
 
 import java.util.List;
 
@@ -35,11 +34,8 @@ public class MainApplication extends Application implements ReactApplication {
       // packages.add(new MyReactNativePackage());
           packages.add(new RNFirebaseMessagingPackage());
           packages.add(new RNFirebaseNotificationsPackage());
-          packages.add(new RNFirebaseLinksPackage());
           packages.add(new RNFirebaseAnalyticsPackage());
           packages.add(new RNFirebaseCrashlyticsPackage());
-          
-          packages.add(new SplashScreenPackage());
 
       return packages;
     }
