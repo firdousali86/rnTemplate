@@ -1,7 +1,7 @@
 import LocationServicesDialogBox from 'react-native-android-location-services-dialog-box';
-import { Alert, Linking, Platform } from 'react-native';
+import {Alert, Linking, Platform} from 'react-native';
 
-import Geocoder from 'react-native-geocoder';
+import Geocoder from 'react-native-geocoder-reborn';
 import AppConfig from '../config/AppConfig';
 
 import Util from '../util';
@@ -10,7 +10,7 @@ let location = {
   latitude: 21.5,
   longitude: 39.17,
   latitudeDelta: 0.015,
-  longitudeDelta: 0.0121
+  longitudeDelta: 0.0121,
 };
 
 class LocationHelper {
@@ -22,7 +22,7 @@ class LocationHelper {
     return {
       ...location,
       latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421
+      longitudeDelta: 0.0421,
     };
   }
 
@@ -30,13 +30,13 @@ class LocationHelper {
     return {
       ...providedLocation,
       latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421
+      longitudeDelta: 0.0421,
     };
   };
 
   setLocation = locationCoords => {
     location = {
-      ...locationCoords
+      ...locationCoords,
     };
   };
 
@@ -53,12 +53,12 @@ class LocationHelper {
           openLocationServices: true, // false => Directly catch method is called if location services are turned off
           preventOutSideTouch: false, //true => To prevent the location services popup from closing when it is clicked outside
           preventBackClick: false, //true => To prevent the location services popup from closing when it is clicked back button
-          providerListener: true // true ==> Trigger "locationProviderStatusChange" listener when the location state changes
+          providerListener: true, // true ==> Trigger "locationProviderStatusChange" listener when the location state changes
         })
           .then(
             function(success) {
               this.getLocationGeneral(callback, errorCallBack);
-            }.bind(this)
+            }.bind(this),
           )
           .catch(error => {
             consoleLog(error.message);
@@ -76,7 +76,7 @@ class LocationHelper {
       position => {
         const location = {
           latitude: position.coords.latitude,
-          longitude: position.coords.longitude
+          longitude: position.coords.longitude,
         };
 
         this.setLocation(location);
@@ -96,15 +96,15 @@ class LocationHelper {
       },
       {
         enableHighAccuracy: Platform.OS != 'android',
-        timeout: 2000
-      }
+        timeout: 2000,
+      },
     );
   };
 
   onLocationFailure = () => {
     Util.showSettingsPopup(
       strings('alertMessages.alert'),
-      strings('alertMessages.appLocPermis')
+      strings('alertMessages.appLocPermis'),
     );
   };
 
@@ -115,7 +115,7 @@ class LocationHelper {
   }
 
   calculateDistance(lat2, lon2) {
-    const { latitude: lat1, longitude: lon1 } = location;
+    const {latitude: lat1, longitude: lon1} = location;
 
     if (!lat1 || !lon1 || !lat2 || !lon2) {
       return '-';
@@ -144,19 +144,19 @@ class LocationHelper {
     if (Util.isPlatformAndroid()) {
       const scheme = Platform.select({
         ios: 'maps:0,0?q=',
-        android: 'geo:0,0?q='
+        android: 'geo:0,0?q=',
       });
       const latLng = `${lat},${lng}`;
 
       const url = Platform.select({
         ios: `${scheme}${label}@${latLng}`,
-        android: `${scheme}${latLng}(${label})`
+        android: `${scheme}${latLng}(${label})`,
       });
 
       Linking.openURL(url);
     } else {
       Linking.openURL(
-        'https://www.google.com/maps/@' + lat + ',' + lng + ',6z'
+        'https://www.google.com/maps/@' + lat + ',' + lng + ',6z',
       );
     }
   };
@@ -169,7 +169,7 @@ class LocationHelper {
       },
       android: () => {
         Linking.openURL('http://maps.google.com/maps?daddr=' + lat + ',' + lng);
-      }
+      },
     })();
   };
 
@@ -178,7 +178,7 @@ class LocationHelper {
 
     Geocoder.geocodePosition({
       lat: providedLocation.latitude,
-      lng: providedLocation.longitude
+      lng: providedLocation.longitude,
     })
       .then(res => {
         let result = res && res.length > 0 ? res[0] : undefined;
@@ -208,7 +208,7 @@ class LocationHelper {
         location1.lat,
         location2.long,
         location2.lat,
-        location2.long
+        location2.long,
       ) * 1000;
 
     return distanceMeters < 100;

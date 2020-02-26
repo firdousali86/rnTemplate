@@ -1,28 +1,11 @@
 // @flow
-import { Platform, Alert, ToastAndroid } from 'react-native';
+import {Platform, Alert, ToastAndroid} from 'react-native';
 import moment from 'moment';
-import VersionNumber from 'react-native-version-number';
 
-import { timeZone } from '../config/AppConfig';
+import {timeZone} from '../config/AppConfig';
 // import DeviceInfo from "react-native-device-info";
 
 class Util {
-  checkVersionUpdate = data => {
-    const appVer = this.getAppVersion();
-
-    if (parseFloat(appVer) < parseFloat(data.minAppVersion)) {
-      return true;
-    } else return false;
-  };
-
-  getAppVersion = () => {
-    return VersionNumber.appVersion;
-  };
-
-  getBuildVersion = () => {
-    return VersionNumber.buildVersion;
-  };
-
   getPlatform = () => Platform.OS;
 
   isPlatformAndroid() {
@@ -42,8 +25,8 @@ class Util {
       Alert.alert(
         title,
         message,
-        [{ text: 'OK', onPress: () => console.log('OK Pressed') }],
-        { cancelable: false }
+        [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+        {cancelable: false},
       );
     }, delay);
   }
@@ -56,15 +39,15 @@ class Util {
         [
           {
             text: 'Yes',
-            onPress: onYes
+            onPress: onYes,
           },
           {
             text: 'No',
             onPress: onNo,
-            style: 'cancel'
-          }
+            style: 'cancel',
+          },
         ],
-        { cancelable: false }
+        {cancelable: false},
       );
     }, 500);
   }
@@ -77,15 +60,15 @@ class Util {
         [
           {
             text: 'Yes',
-            onPress: onYes
+            onPress: onYes,
           },
           {
             text: 'No',
             onPress: onNo,
-            style: 'cancel'
-          }
+            style: 'cancel',
+          },
         ],
-        { cancelable: false }
+        {cancelable: false},
       );
     }, 500);
   }
@@ -99,7 +82,9 @@ class Util {
   getFloat(value) {
     let converted = parseFloat(value);
 
-    if (converted && typeof converted == 'number') return converted;
+    if (converted && typeof converted === 'number') {
+      return converted;
+    }
 
     return 0.0;
   }

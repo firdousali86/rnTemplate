@@ -1,14 +1,14 @@
 // @flow
-import { connect } from 'react-redux';
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import Tts from 'react-native-tts';
+import {connect} from 'react-redux';
+import React, {Component} from 'react';
+import {View} from 'react-native';
+// import Tts from 'react-native-tts';
 
 import styles from './styles';
 
-import { ButtonView, Text } from '../../components';
-import { RecordingControl } from '../../controls';
-import { Metrics, Colors } from '../../theme';
+import {ButtonView, Text} from '../../components';
+import {RecordingControl} from '../../controls';
+import {Metrics, Colors} from '../../theme';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -16,15 +16,15 @@ class Dashboard extends Component {
 
     this.state = {
       isRecording: false,
-      recognizedString: ''
+      recognizedString: '',
     };
   }
 
   renderContent = () => {
-    const { recognizedString } = this.state;
+    const {recognizedString} = this.state;
     return (
-      <View style={{ flex: 1 }}>
-        <Text color='white'>{recognizedString}</Text>
+      <View style={{flex: 1}}>
+        <Text color="white">{recognizedString}</Text>
       </View>
     );
   };
@@ -35,23 +35,22 @@ class Dashboard extends Component {
         style={{
           height: Metrics.ratio(70),
           justifyContent: 'center',
-          alignItems: 'center'
-        }}
-      >
+          alignItems: 'center',
+        }}>
         {this.renderRecordingControl()}
       </View>
     );
   };
 
   renderRecordingControl = () => {
-    const { isRecording } = this.state;
+    const {isRecording} = this.state;
 
     return (
       <RecordingControl
         isRecording={isRecording}
         onSpeechResults={resultText => {
-          Tts.speak(resultText);
-          this.setState({ recognizedString: resultText });
+          //Tts.speak(resultText);
+          this.setState({recognizedString: resultText});
         }}
         containerStyle={{}}
       />
@@ -74,5 +73,5 @@ const actions = {};
 
 export default connect(
   mapStateToProps,
-  actions
+  actions,
 )(Dashboard);

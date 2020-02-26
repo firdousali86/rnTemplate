@@ -1,25 +1,24 @@
 // @flow
 
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import FastImage from 'react-native-fast-image';
 import {
   Image,
   View,
   ViewPropTypes,
   Image as ImageNative,
-  ActivityIndicator
+  ActivityIndicator,
 } from 'react-native';
 // import RNImagePicker from "react-native-image-picker";
 import MultipleImagePicker from 'react-native-image-crop-picker';
-import RNGRP from 'react-native-get-real-path';
 import ImageResizer from 'react-native-image-resizer';
 import styles from './styles';
 import ButtonView from '../ButtonView';
 import async from 'async';
 import ActionSheet from 'react-native-actionsheet';
 import _ from 'lodash';
-import { Metrics, Colors } from '../../theme';
+import {Metrics, Colors} from '../../theme';
 import utils from '../../util';
 import commonUtils from '../../util/commonUtils';
 
@@ -45,7 +44,7 @@ const resizeImageHandling = (selectedData, callback) => {
     calculatedWidth,
     calculatedHeight,
     'JPEG',
-    100
+    100,
   )
     .then(resizedImage => {
       callback(resizedImage);
@@ -56,32 +55,14 @@ const resizeImageHandling = (selectedData, callback) => {
     });
 };
 
-const getFilePath = (path, callback) => {
-  if (utils.isPlatformAndroid()) {
-    RNGRP.getRealPathFromURI(path.uri || path.path)
-      .then(filePath => {
-        callback(filePath);
-      })
-      .catch(err => {
-        consoleLog(err);
-      });
-  } else {
-    callback(path.path || path.uri);
-  }
-};
-
 const resizeVideoHandling = (selectedData, callback) => {
-  getFilePath(selectedData, filePath => {
-    selectedData.uri = filePath;
-    selectedData.path = filePath;
-    callback(selectedData);
-  });
+  callback(selectedData);
 };
 
 export default class ImagePicker extends Component {
   constructor(props) {
     super(props);
-    this.state = { loaded: false };
+    this.state = {loaded: false};
   }
   static propTypes = {
     source: PropTypes.oneOfType([PropTypes.number, PropTypes.object])
@@ -91,12 +72,12 @@ export default class ImagePicker extends Component {
     containerStyle: PropTypes.oneOfType([
       PropTypes.array,
       ViewPropTypes.style,
-      PropTypes.object
+      PropTypes.object,
     ]),
     isMultiple: PropTypes.bool,
     isCropping: PropTypes.bool,
     isCameraVideo: PropTypes.bool,
-    isEditable: PropTypes.bool
+    isEditable: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -105,11 +86,11 @@ export default class ImagePicker extends Component {
     isMultiple: false,
     isCropping: false,
     isCameraVideo: false,
-    isEditable: true
+    isEditable: true,
   };
 
   handlePressActionSheet = i => {
-    const { isCameraVideo, onImagePicked, onVideoPicked } = this.props;
+    const {isCameraVideo, onImagePicked, onVideoPicked} = this.props;
 
     if (isCameraVideo) {
       if (i === 0) {
@@ -141,14 +122,14 @@ export default class ImagePicker extends Component {
   };
 
   showCameraImagePicker = thisCallback => {
-    const { onImagePicked, isCropping, ...rest } = this.props;
+    const {onImagePicked, isCropping, ...rest} = this.props;
 
     MultipleImagePicker.openCamera({
       width: 720,
       height: 480,
       cropping: isCropping,
       mediaType: 'photo',
-      ...rest
+      ...rest,
     }).then(
       selectedMedia => {
         resizeImageHandling(selectedMedia, resizedImage => {
@@ -163,7 +144,7 @@ export default class ImagePicker extends Component {
         if (error && error.code === 'E_PERMISSION_MISSING') {
           utils.showSettingsPopup('Alert', 'CARHUB requires access to Camera');
         }
-      }
+      },
     );
   };
 
@@ -208,13 +189,13 @@ export default class ImagePicker extends Component {
   // };
 
   showImageGalleryPicker = thisCallback => {
-    const { isMultiple, isCropping, onImagePicked, ...rest } = this.props;
+    const {isMultiple, isCropping, onImagePicked, ...rest} = this.props;
 
     MultipleImagePicker.openPicker({
       ...rest,
       multiple: isMultiple,
       cropping: isCropping,
-      mediaType: 'photo'
+      mediaType: 'photo',
     }).then(
       selectedMedia => {
         if (isMultiple) {
@@ -237,7 +218,7 @@ export default class ImagePicker extends Component {
               } else {
                 onImagePicked(editedArray);
               }
-            }
+            },
           );
         } else {
           resizeImageHandling(selectedMedia, resizedImage => {
@@ -253,19 +234,19 @@ export default class ImagePicker extends Component {
         if (error && error.code === 'E_PERMISSION_MISSING') {
           utils.showSettingsPopup(
             'Alert',
-            'CARHUB requires access to Photo Gallery'
+            'CARHUB requires access to Photo Gallery',
           );
         }
-      }
+      },
     );
   };
 
   showVideoGalleryPicker = thisCallback => {
-    const { onVideoPicked, ...rest } = this.props;
+    const {onVideoPicked, ...rest} = this.props;
 
     MultipleImagePicker.openPicker({
       ...rest,
-      mediaType: 'video'
+      mediaType: 'video',
     }).then(
       selectedMedia => {
         if (selectedMedia.mime.includes('video')) {
@@ -282,10 +263,10 @@ export default class ImagePicker extends Component {
         if (error && error.code === 'E_PERMISSION_MISSING') {
           utils.showSettingsPopup(
             'Alert',
-            'CARHUB requires access to Photo Gallery'
+            'CARHUB requires access to Photo Gallery',
           );
         }
-      }
+      },
     );
   };
 
@@ -298,7 +279,7 @@ export default class ImagePicker extends Component {
   };
 
   renderSmallIcon = () => {
-    const { smallIcon, isCameraVideo } = this.props;
+    const {smallIcon, isCameraVideo} = this.props;
     if (smallIcon) {
       return (
         <View style={styles.editProfileBtnContainer}>
@@ -310,17 +291,18 @@ export default class ImagePicker extends Component {
                 this._showImagePicker();
               }
             }}
-            style={styles.editProfileBtn}
-          >
+            style={styles.editProfileBtn}>
             <ImageNative source={smallIcon} style={styles.editProfileBtn} />
           </ButtonView>
         </View>
       );
-    } else return null;
+    } else {
+      return null;
+    }
   };
 
   onLoadEnd() {
-    this.setState({ loaded: true });
+    this.setState({loaded: true});
   }
 
   renderLoader = () => {
@@ -333,10 +315,9 @@ export default class ImagePicker extends Component {
               position: 'absolute',
               zIndex: 1,
               marginLeft: Metrics.ratio(45),
-              marginTop: Metrics.ratio(45)
-            }}
-          >
-            <ActivityIndicator size='large' color={Colors.loaderColor} />
+              marginTop: Metrics.ratio(45),
+            }}>
+            <ActivityIndicator size="large" color={Colors.loaderColor} />
           </View>
         )}
       </View>
@@ -344,7 +325,7 @@ export default class ImagePicker extends Component {
   };
 
   render() {
-    const { isCameraVideo, onProfileImagePress, isEditable } = this.props;
+    const {isCameraVideo, onProfileImagePress, isEditable} = this.props;
     const options = ['Camera', 'Gallery', 'Cancel'];
 
     return (
@@ -361,8 +342,7 @@ export default class ImagePicker extends Component {
                 this._showImagePicker();
               }
             }
-          }}
-        >
+          }}>
           {this.renderLoader()}
           <FastImage
             resizeMode={FastImage.resizeMode.cover}
@@ -388,7 +368,7 @@ export default class ImagePicker extends Component {
             'Capture',
             'Select Images',
             'Select Video',
-            'Cancel'
+            'Cancel',
           ]}
           cancelButtonIndex={4}
           // destructiveButtonIndex={1}
