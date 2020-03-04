@@ -963,6 +963,11 @@
     eslint-plugin-react-native "3.6.0"
     prettier "1.16.4"
 
+"@react-native-community/netinfo@^5.5.1":
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-5.5.1.tgz#6433d4d9d5fbe836f019e5a88a6a24b6e2dc50b9"
+  integrity sha512-6NKX/WzzC5FP2RSzoq+7CW/iIiRL2S6yN0JKiGvZ8EWAzJ43dbX5KG4kRa1JiKopAal5Vyh80dymbygeylwekQ==
+
 "@react-native-community/voice@1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@react-native-community/voice/-/voice-1.0.6.tgz#c92de10ef29b7ebd5b8588250a9ebf89e92e0721"

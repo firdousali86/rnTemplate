@@ -1,26 +1,22 @@
-import { NetInfo } from 'react-native';
+import NetInfo from '@react-native-community/netinfo';
 
 class NetworkInfo {
+  unsubscribe = undefined;
+
   networkInfoListener(dispatch, networkInfoAction) {
-    NetInfo.isConnected.fetch().then(isNetworkConnected => {
-      dispatch(networkInfoAction(isNetworkConnected));
+    NetInfo.fetch().then(state => {
+      dispatch(networkInfoAction(state.isConnected, state.isInternetReachable));
     });
 
-    NetInfo.isConnected.addEventListener(
-      'connectionChange',
-      isNetworkConnected => {
-        dispatch(networkInfoAction(isNetworkConnected));
-      }
-    );
+    unsubscribe = NetInfo.addEventListener(state => {
+      dispatch(networkInfoAction(state.isConnected, state.isInternetReachable));
+    });
   }
 
-  removeNetworkInfoListener(dispatch, networkInfoAction) {
-    NetInfo.isConnected.removeEventListener(
-      'connectionChange',
-      isNetworkConnected => {
-        dispatch(networkInfoAction(isNetworkConnected));
-      }
-    );
+  removeNetworkInfoListener() {
+    if (this.unsubscribe) {
+      this.unsubscribe();
+    }
   }
 }
 
