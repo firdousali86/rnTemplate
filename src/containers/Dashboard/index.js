@@ -2,7 +2,7 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import {View} from 'react-native';
-// import Tts from 'react-native-tts';
+import Tts from 'react-native-tts';
 
 import styles from './styles';
 
@@ -49,7 +49,7 @@ class Dashboard extends Component {
       <RecordingControl
         isRecording={isRecording}
         onSpeechResults={resultText => {
-          //Tts.speak(resultText);
+          Tts.speak(resultText);
           this.setState({recognizedString: resultText});
         }}
         containerStyle={{}}
@@ -71,7 +71,4 @@ const mapStateToProps = () => ({});
 
 const actions = {};
 
-export default connect(
-  mapStateToProps,
-  actions,
-)(Dashboard);
+export default connect(mapStateToProps, actions)(Dashboard);

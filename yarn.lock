@@ -5311,6 +5311,11 @@ react-native-tab-view@^1.0.0:
   dependencies:
     prop-types "^15.6.1"
 
+react-native-tts@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-tts/-/react-native-tts-3.1.1.tgz#b3eb4133432c70beb6dfb33685737c8cab441e02"
+  integrity sha512-EGwapFt1CMBopawc8WvpHRv/oXZnOQPuS5ZHrKp0zpz7Kosb6aN1cyj6YSUX2LzcqP6glhrvCPS+PPkW2yMbRQ==
+
 react-native-vscode-settings@^0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/react-native-vscode-settings/-/react-native-vscode-settings-0.0.8.tgz#7e684f98ef88e8483ed1fa21ca43409db2171e69"
