@@ -1,43 +1,36 @@
 // @flow
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import {
   Stack,
   Scene,
   Drawer,
   Router,
   Actions,
-  ActionConst
+  ActionConst,
 } from 'react-native-router-flux';
-import { View } from 'react-native';
-import { Colors } from '../theme';
-import { Empty, Dashboard } from '../containers';
+import {View} from 'react-native';
+import {Colors} from '../theme';
+import {Empty, Dashboard} from '../containers';
 
 import styles from './styles';
 
-const mapStateToProps = state => {
-  return {
-    cartData: state.cart.data
-  };
-};
-
 const navigator = Actions.create(
   <Stack
-    key='root'
+    key="root"
     titleStyle={styles.title}
     headerStyle={styles.header}
     headerTintColor={Colors.navbar.text}
-    backTitle=' '
-  >
-    <Scene title='Select Country Code' key='empty' component={Empty} />
+    backTitle=" ">
+    <Scene title="Empty" key="empty" component={Empty} />
     <Scene
-      title='Select Country Code'
-      key='dashboard'
+      title="Dashboard"
+      key="dashboard"
       component={Dashboard}
       hideNavBar
       initial
     />
-  </Stack>
+  </Stack>,
 );
 
 export default () => <AppNavigator navigator={navigator} />;
