@@ -9,6 +9,11 @@
     "test": "jest",
     "lint": "eslint ."
   },
+  "rnpm": {
+    "assets": [
+      "./src/assets/fonts"
+    ]
+  },
   "dependencies": {
     "@react-native-community/netinfo": "^5.5.1",
     "@react-native-community/voice": "1.0.6",
