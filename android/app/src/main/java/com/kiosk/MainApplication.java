@@ -1,4 +1,4 @@
-package com.kiosk;
+package com.app;
 
 import android.app.Application;
 import android.content.Context;
