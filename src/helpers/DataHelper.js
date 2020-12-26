@@ -1,4 +1,6 @@
-import { Actions } from 'react-native-router-flux';
+import {Actions} from 'react-native-router-flux';
+import {kApiLogout, defaultServer} from '../config/WebService';
+import {logout, request} from '../actions/UserActions';
 
 class DataHelper {
   store = undefined;
@@ -10,6 +12,23 @@ class DataHelper {
   getStore() {
     return this.store;
   }
+
+  getServiceURL = () => {
+    const appSettings =
+      this.store && this.store.getState()
+        ? this.store.getState().appSettings
+        : undefined;
+
+    if (
+      appSettings &&
+      appSettings.serverUrl &&
+      appSettings.serverUrl.length > 0
+    ) {
+      return appSettings.serverUrl;
+    } else {
+      return defaultServer;
+    }
+  };
 
   getAccessToken = () => {
     const user =
@@ -26,6 +45,17 @@ class DataHelper {
 
   isUserAuthenticated = () => {
     return this.getAccessToken() !== undefined;
+  };
+
+  onLogout = () => {
+    // if (this.getUser()) {
+    //   this.getStore().dispatch(
+    //     request(kApiLogout(this.getUser().accessToken), {}),
+    //   );
+    // }
+
+    this.getStore().dispatch(logout());
+    Actions.reset('login');
   };
 }
 

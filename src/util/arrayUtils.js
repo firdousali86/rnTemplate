@@ -1,7 +1,9 @@
+import _ from 'lodash';
+
 class ArrayUtils {
   sortArrayWithKey = property => {
     var sortOrder = 1;
-    if (property[0] === "-") {
+    if (property[0] === '-') {
       sortOrder = -1;
       property = property.substr(1);
     }
@@ -18,7 +20,7 @@ class ArrayUtils {
     return [
       ...arrayInst.slice(0, indexToAdd),
       newItem,
-      ...arrayInst.slice(indexToAdd)
+      ...arrayInst.slice(indexToAdd),
     ];
   };
 
@@ -34,6 +36,27 @@ class ArrayUtils {
       });
     };
     return changes(object, base);
+  };
+
+  keyExistInArray = (key, array) => {
+    if (array && array.length > 0) {
+      return array.indexOf(key) > -1;
+    }
+
+    return false;
+  };
+
+  removeKeyFromArray = (key, array) => {
+    if (array && array.length > 0) {
+      var index = array.indexOf(key);
+      array.splice(index, 1);
+    }
+  };
+
+  removeIndexFromArray = (index, array) => {
+    if (array && array.length > 0) {
+      array.splice(index, 1);
+    }
   };
 }
 

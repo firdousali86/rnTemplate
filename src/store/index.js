@@ -1,11 +1,11 @@
 // @flow
 
 import * as storage from 'redux-storage';
-import { createLogger } from 'redux-logger';
+import {createLogger} from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import filter from 'redux-storage-decorator-filter';
-import { composeWithDevTools } from 'remote-redux-devtools';
-import { createStore, applyMiddleware } from 'redux';
+import {composeWithDevTools} from 'remote-redux-devtools';
+import {createStore, applyMiddleware} from 'redux';
 import createEngine from 'redux-storage-engine-reactnativeasyncstorage';
 // import reducers from "../reducers";
 import sagas from '../sagas';
@@ -16,17 +16,18 @@ const logger = createLogger({
   predicate: () => isDebuggingInChrome,
   collapsed: true,
   duration: true,
-  diff: true
+  diff: true,
 });
 
 export default function configureStore(reducers, onComplete: Function) {
   const engine = filter(
     createEngine('AppTree'),
     [
-      'whitelisted-key'
-      // ['user', 'data'],
+      'whitelisted-key',
+      ['appSettings', 'serverUrl'],
+      ['appSettings', 'deviceToken'],
     ],
-    []
+    [],
   );
   const storeMiddleware = storage.createMiddleware(engine);
   const sagaMiddleware = createSagaMiddleware();
@@ -34,8 +35,8 @@ export default function configureStore(reducers, onComplete: Function) {
   const store = createStore(
     storage.reducer(reducers),
     composeWithDevTools(
-      applyMiddleware(sagaMiddleware, storeMiddleware, logger)
-    )
+      applyMiddleware(sagaMiddleware, storeMiddleware, logger),
+    ),
   );
 
   if (isDebuggingInChrome) {
@@ -46,7 +47,7 @@ export default function configureStore(reducers, onComplete: Function) {
   load(store)
     .then(onComplete)
     .catch(() =>
-      console.log('Failed to load previous state @ configureStore.js#44')
+      console.log('Failed to load previous state @ configureStore.js#44'),
     );
 
   sagaMiddleware.run(sagas);

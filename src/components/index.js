@@ -9,6 +9,8 @@ import ImagePicker from './ImagePicker';
 import IModal from './IModal';
 import Loading from './Loading';
 import Separator from './Separator';
+import AppDebugButton from './AppDebugButton';
+import ActivityLoader from './ActivityLoader';
 
 export {
   AppState,
@@ -20,5 +22,7 @@ export {
   ImagePicker,
   IModal,
   Loading,
-  Separator
+  Separator,
+  AppDebugButton,
+  ActivityLoader,
 };
