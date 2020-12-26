@@ -9,38 +9,22 @@
 // Heading 20
 // desc 17
 
-import { Platform } from 'react-native';
+import {Platform} from 'react-native';
 import Metrics from './Metrics';
 
 const type = {
-  base: Platform.select({
-    ios: 'Lato-Regular',
-    android: 'Lato-Regular'
-  }),
-  bold: Platform.select({
-    ios: 'Lato-Bold',
-    android: 'Lato-Bold'
-  }),
-  italic: Platform.select({
-    ios: 'Lato-Italic',
-    android: 'Lato-Italic'
-  }),
-  light: Platform.select({
-    ios: 'Lato-Light',
-    android: 'Lato-Light'
-  }),
-  writing: Platform.select({
-    ios: 'vincHand',
-    android: 'vincHand'
-  }),
-  thin: Platform.select({
-    ios: 'Lato-Thin',
-    android: 'Lato-Thin'
-  }),
-  thinItalic: Platform.select({
-    ios: 'Lato-ThinItalic',
-    android: 'Lato-ThinItalic'
-  })
+  base: Platform.OS == 'ios' ? 'OpenSans' : 'OpenSans-Regular',
+  heavy:
+    Platform.OS == 'ios'
+      ? 'OpenSans-SemiboldItalic'
+      : 'OpenSans-SemiboldItalic_0',
+  medium: 'OpenSans-Semibold',
+  light: 'OpenSans-Light',
+  book: 'OpenSans-Bold',
+  black: 'Avenir-Black',
+  normal: 'OpenSans-Regular',
+  extraBold: 'OpenSans-ExtraBold',
+  schoolBell: Platform.OS == 'ios' ? 'Schoolbell' : 'Schoolbell-pMMy',
 };
 
 // Metrics.generatedFontSize(ios, android)
@@ -63,10 +47,10 @@ const size = {
   xxLarge: Metrics.generatedFontSize(34),
   xxLarge2: Metrics.generatedFontSize(36),
   xxxLarge: Metrics.generatedFontSize(40),
-  xxxxLarge: Metrics.generatedFontSize(60)
+  xxxxLarge: Metrics.generatedFontSize(60),
 };
 
 export default {
   type,
-  size
+  size,
 };
