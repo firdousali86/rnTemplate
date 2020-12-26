@@ -1,7 +1,10 @@
-package com.app;
+package com.ideamath.chase;
 
 import android.app.Application;
 import android.content.Context;
+
+import com.facebook.CallbackManager;
+
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import io.invertase.firebase.RNFirebasePackage;
@@ -18,7 +21,15 @@ import java.lang.reflect.InvocationTargetException;
 
 import java.util.List;
 
+import com.splashscreen.SplashScreenPackage;
+
 public class MainApplication extends Application implements ReactApplication {
+
+  private static CallbackManager mCallbackManager = CallbackManager.Factory.create();
+
+  protected static CallbackManager getCallbackManager() {
+    return mCallbackManager;
+  }
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
@@ -37,25 +48,10 @@ public class MainApplication extends Application implements ReactApplication {
           packages.add(new RNFirebaseAnalyticsPackage());
           packages.add(new RNFirebaseCrashlyticsPackage());
 
+          packages.add(new SplashScreenPackage());
+
       return packages;
     }
-
-    // @Override
-    // protected List<ReactPackage> getPackages() {
-    //   return Arrays.<ReactPackage>asList(
-    //       new MainReactPackage(),
-    //         new RNFirebasePackage(),
-    //         new PickerPackage(),
-    //         new RNVersionNumberPackage(),
-    //         new VoicePackage(),
-    //         new TextToSpeechPackage(),
-    //         new RNGeocoderPackage(),         
-    //         new RNFirebaseMessagingPackage(), 
-    //         new RNFirebaseNotificationsPackage(), 
-    //         new RNFirebaseAnalyticsPackage(), 
-    //         new RNFirebaseCrashlyticsPackage()
-    //   );
-    // }
 
     @Override
     protected String getJSMainModuleName() {
