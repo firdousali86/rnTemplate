@@ -187,18 +187,8 @@ android {
 }
 
 dependencies {
-    // implementation project(':react-native-firebase')
-    // implementation project(':react-native-geocoder')
-    // implementation project(':react-native-image-crop-picker')
-    // implementation project(':react-native-version-number')
-    // implementation project(':react-native-tts')
-
     implementation "com.google.firebase:firebase-core:17.0.1"
     implementation "com.google.firebase:firebase-messaging:19.0.0"
-
-    // compile(project(':react-native-firebase')) {
-    //     transitive = false
-    // }
 
     implementation 'com.google.android.gms:play-services-base:17.0.0'
 

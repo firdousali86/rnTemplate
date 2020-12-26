@@ -2,12 +2,11 @@
 import {connect} from 'react-redux';
 import React, {Component} from 'react';
 import {View} from 'react-native';
-import Tts from 'react-native-tts';
 
 import styles from './styles';
 
 import {ButtonView, Text} from '../../components';
-import {RecordingControl} from '../../controls';
+
 import {Metrics, Colors} from '../../theme';
 
 class Dashboard extends Component {
@@ -36,23 +35,7 @@ class Dashboard extends Component {
           height: Metrics.ratio(70),
           justifyContent: 'center',
           alignItems: 'center',
-        }}>
-        {this.renderRecordingControl()}
-      </View>
-    );
-  };
-
-  renderRecordingControl = () => {
-    const {isRecording} = this.state;
-
-    return (
-      <RecordingControl
-        isRecording={isRecording}
-        onSpeechResults={resultText => {
-          Tts.speak(resultText);
-          this.setState({recognizedString: resultText});
         }}
-        containerStyle={{}}
       />
     );
   };
@@ -71,4 +54,7 @@ const mapStateToProps = () => ({});
 
 const actions = {};
 
-export default connect(mapStateToProps, actions)(Dashboard);
+export default connect(
+  mapStateToProps,
+  actions,
+)(Dashboard);
