@@ -20,7 +20,8 @@
 		6AD355D9FEFA4B8D8B093210 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D250812850374BD4855B89DF /* OpenSans-Semibold.ttf */; };
 		7FA9EF5D9B754DE783BF6954 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B72C0956313490687A8FFC5 /* OpenSans-BoldItalic.ttf */; };
 		81C9C5B8E17C435BAFD97F65 /* opensans-condbold-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E9C4864CDB1405AAD68520C /* opensans-condbold-webfont.ttf */; };
-		87BF00A92597444C004A1ACF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 87BF00A72597444C004A1ACF /* GoogleService-Info.plist */; };
+		87B4A2BA25AB10FF008118A2 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B4A2B925AB10FF008118A2 /* Dummy.swift */; };
+		87B4A2BD25AB11EF008118A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 87B4A2BC25AB11EE008118A2 /* GoogleService-Info.plist */; };
 		A6E335FB4041492DB43FE372 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF328C1FF9E549489DC6B2AC /* OpenSans-Italic.ttf */; };
 		A710FAB264E48D0C1951FC6C /* libPods-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D670A28E36490929B21E0B02 /* libPods-app.a */; };
 		B078C175120048F2BD121723 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4122D1B9D9F47D8B0F2CDEF /* libRNFirebase.a */; };
@@ -62,7 +63,9 @@
 		71493F6EBF204628AF9FA7B3 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		748E9A1EDC5601307D7E84A6 /* Pods-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-app.release.xcconfig"; path = "Target Support Files/Pods-app/Pods-app.release.xcconfig"; sourceTree = "<group>"; };
 		7D00CEEFC5BB48F4B3FCA5CF /* libReactNativeKeyboardManager.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeKeyboardManager.a; sourceTree = "<group>"; };
-		87BF00A72597444C004A1ACF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "app/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		87B4A2B825AB10FE008118A2 /* app-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "app-Bridging-Header.h"; sourceTree = "<group>"; };
+		87B4A2B925AB10FF008118A2 /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
+		87B4A2BC25AB11EE008118A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "app/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		961E93EE43464230885298BD /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Bold.ttf"; path = "../src/assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		9AD13492A2734E4B8587F199 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBold.ttf"; path = "../src/assets/fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		A4122D1B9D9F47D8B0F2CDEF /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
@@ -114,7 +117,7 @@
 		13B07FAE1A68108700A75B9A /* app */ = {
 			isa = PBXGroup;
 			children = (
-				87BF00A72597444C004A1ACF /* GoogleService-Info.plist */,
+				87B4A2BC25AB11EE008118A2 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -122,6 +125,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				87B4A2B925AB10FF008118A2 /* Dummy.swift */,
+				87B4A2B825AB10FE008118A2 /* app-Bridging-Header.h */,
 			);
 			name = app;
 			sourceTree = "<group>";
@@ -251,6 +256,11 @@
 			attributes = {
 				LastUpgradeCheck = 940;
 				ORGANIZATIONNAME = Facebook;
+				TargetAttributes = {
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1120;
+					};
+				};
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "app" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -301,7 +311,7 @@
 				4B3B281BD4E74B509491888E /* OpenSans-ExtraBold.ttf in Resources */,
 				371379037B804BDCB1CB78EA /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				A6E335FB4041492DB43FE372 /* OpenSans-Italic.ttf in Resources */,
-				87BF00A92597444C004A1ACF /* GoogleService-Info.plist in Resources */,
+				87B4A2BD25AB11EF008118A2 /* GoogleService-Info.plist in Resources */,
 				D709DEFA7B4C47F38BC55A9D /* OpenSans-Light.ttf in Resources */,
 				533444833BAE47488F08CB4E /* OpenSans-LightItalic.ttf in Resources */,
 				B0BE2F4AF4C34CAFA321585C /* OpenSans-Regular.ttf in Resources */,
@@ -382,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				87B4A2BA25AB10FF008118A2 /* Dummy.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,6 +417,7 @@
 			baseConfigurationReference = E73348E0E2F446629DBD9EF9 /* Pods-app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				HEADER_SEARCH_PATHS = (
@@ -424,6 +436,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = app;
+				SWIFT_OBJC_BRIDGING_HEADER = "app-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -433,6 +448,7 @@
 			baseConfigurationReference = 748E9A1EDC5601307D7E84A6 /* Pods-app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -450,6 +466,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = app;
+				SWIFT_OBJC_BRIDGING_HEADER = "app-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
